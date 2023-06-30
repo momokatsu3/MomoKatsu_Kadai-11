@@ -26,14 +26,12 @@ class PrefecturesViewController: UIViewController, UITableViewDataSource, UITabl
 
     // テーブルビューに表示するデータを返すメソッド（スクロールなどでページを更新する必要が出るたびに呼び出される）
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //セルを取得する
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "")
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PrefecturesCell", for: indexPath)
 
         // UITableViewCellのtextLabelに選択した都道府県名を設定
         cell.textLabel?.text = prefecturesList[indexPath.row]
-        // セルのフォント変更
-        cell.textLabel!.font = UIFont(name: "Arial", size: 20)
-        
+
         return cell
     }
 
